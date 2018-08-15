@@ -142,3 +142,12 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',
    ),
 }
+
+SITE_ID = 2
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'SCOPE': ['email'],
+        'METHOD': 'oauth2'
+    }
+}

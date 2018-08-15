@@ -1,4 +1,6 @@
+from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from django.contrib.auth.models import User, Group
+from rest_auth.registration.views import SocialLoginView
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -20,3 +22,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+
+class FacebookLogin(SocialLoginView):
+    adapter_class = FacebookOAuth2Adapter
