@@ -4,6 +4,7 @@ from django.conf.urls import url, include
 from rest_framework import routers
 from authapp import views
 from authapp.views import FacebookLogin
+from rest_framework_jwt.views import refresh_jwt_token
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
@@ -17,4 +18,5 @@ urlpatterns = [
     # url(r'^rest-auth/', include('rest_framework.urls', namespace='rest_framework'))
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^rest-auth/facebook/$', FacebookLogin.as_view(), name='fb_login'),
+    url(r'^api-token-refresh/', refresh_jwt_token),
 ]
